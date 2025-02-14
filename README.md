@@ -1,4 +1,4 @@
-#ML prediction - RC Wall buildings
+# ML prediction - RC Wall buildings
 
 This repository presents the trained ML models of the paper "Machine Learning based evaluation of roof drifts and accelerations of RC wall buildings during ground motions". Artificial Neural Netwroks (ANN) and Random Forest (RF) are available to make predictions of the maximum roof acceleration (PFA_max) and the maximum roof drift ratio (rDR_max) in reinforced concrete wall buildings. This repository presents the trained models, prediction functions (please see the function documentation in the .py file) and examples for multiple and individual prediction modes. You can use the prediction functions in your own project with two different ways:
 
