@@ -12,10 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import os
 import pandas as pd
 import joblib
 from tensorflow.keras.models import load_model
 from tensorflow.keras.losses import MeanSquaredError
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODELS_DIR = os.path.join(BASE_DIR, "Models")
 
 #%%Prediction Function - Individual
 def prediction_ML_walls_individual(WI, T1, H_Tcr, Ar, ALR_G, AI, Sa, Sv,
@@ -42,16 +46,16 @@ def prediction_ML_walls_individual(WI, T1, H_Tcr, Ar, ALR_G, AI, Sa, Sv,
     for var in var_predict:
         for model in model_predict:
             #Import Scalers
-            path_scalerX = f"Models/Scalers/ScalerX_{var}_{model}.pkl"
-            path_scalerY = f"Models/Scalers/ScalerY_{var}_{model}.pkl"
+            path_scalerX = os.path.join(MODELS_DIR, "Scalers", f"ScalerX_{var}_{model}.pkl")
+            path_scalerY = os.path.join(MODELS_DIR, "Scalers", f"ScalerY_{var}_{model}.pkl")
             scalerX = joblib.load(path_scalerX)
             scalerY = joblib.load(path_scalerY)
             #Import models
             if model == "ANN":
-                path_model = f"Models/{var}/{var}_{model}.h5"
+                path_model = os.path.join(MODELS_DIR, var, f"{var}_{model}.h5")
                 regressor = load_model(path_model, custom_objects={'mse': MeanSquaredError()})
             elif model == "RF":
-                path_model = f"Models/{var}/{var}_{model}.pkl"
+                path_model = os.path.join(MODELS_DIR, var, f"{var}_{model}.pkl")
                 regressor = joblib.load(path_model)
             #Creating dataframe of predictors (and scaling the data)
             X = pd.DataFrame({'IM-Arq':[WI],
@@ -116,16 +120,16 @@ def prediction_ML_walls_multiple(X,
     for var in var_predict:
         for model in model_predict:
             #Import Scalers
-            path_scalerX = f"Models/Scalers/ScalerX_{var}_{model}.pkl"
-            path_scalerY = f"Models/Scalers/ScalerY_{var}_{model}.pkl"
+            path_scalerX = os.path.join(MODELS_DIR, "Scalers", f"ScalerX_{var}_{model}.pkl")
+            path_scalerY = os.path.join(MODELS_DIR, "Scalers", f"ScalerY_{var}_{model}.pkl")
             scalerX = joblib.load(path_scalerX)
             scalerY = joblib.load(path_scalerY)
             #Import models
             if model == "ANN":
-                path_model = f"Models/{var}/{var}_{model}.h5"
+                path_model = os.path.join(MODELS_DIR, var, f"{var}_{model}.h5")
                 regressor = load_model(path_model, custom_objects={'mse': MeanSquaredError()})
             elif model == "RF":
-                path_model = f"Models/{var}/{var}_{model}.pkl"
+                path_model = os.path.join(MODELS_DIR, var, f"{var}_{model}.pkl")
                 regressor = joblib.load(path_model)
             #Scaling the data
             X_scaled = scalerX.transform(X)
