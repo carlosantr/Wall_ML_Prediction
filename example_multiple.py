@@ -15,7 +15,10 @@
 #%% Importing libraries
 import pandas as pd
 import matplotlib.pyplot as plt
-from predict import prediction_ML_walls_multiple
+#If you are using the prediction functions locally
+from predict import prediction_ML_walls_multiple 
+#If you previously installed the open-source library (on your command prompt: "pip install wall_ml_prediction")
+#from wall_ml_prediction.predict import prediction_ML_walls_multiple 
 
 #%%Importing the example data
 Input_Data = pd.read_excel("Example dataset/Example.xlsx")
