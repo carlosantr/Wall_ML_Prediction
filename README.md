@@ -33,6 +33,7 @@ For further information about the input data required by the functions, please s
 * Sv: Spectral velocity
 - The columns must have exactly the same name (i.e., X.columns = ['WI', 'T1', 'H_Tcr', 'Ar', 'ALR_G', 'AI', 'Sa', 'Sv'])
 - var_predict: Is a optional variable, and must be a list with the output values to predict (e.g. ["PFA_max", "rDR_max"], ["PFA_max"] or ["rDR_max"])
+- model_predict: Is an optional variable, and must be a list with the Machine Learning models to do the predictions (i.e. ["RF", "ANN"], ["RF"] or ["ANN"])
 
 # IMPORTANT NOTE: 
 - The functions are expected to be used with input data in the range presented in Table 1 of the paper. If you use out-of-range values, the predictions could be worst. Be careful about the data you input to the prediction functions.
