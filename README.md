@@ -23,14 +23,14 @@ For further information about the input data required by the functions, please s
 
 ##### Multiple prediction mode:
 - X must be a dataframe with the next columns (each row is a prediction):
-        * WI: Wall Index
-        * T1: Fundamental period 
-        * H_Tcr: Stiffness Index
-        * Ar: Mean wall aspect ratio
-        * ALR_G: Average axial load ratio for gravity loads 
-        * AI: Arias Intensity
-        * Sa: Spectral acceleration 
-        * Sv: Spectral velocity
+* WI: Wall Index
+* T1: Fundamental period 
+* H_Tcr: Stiffness Index
+* Ar: Mean wall aspect ratio
+* ALR_G: Average axial load ratio for gravity loads 
+* AI: Arias Intensity
+* Sa: Spectral acceleration 
+* Sv: Spectral velocity
 - The columns must have exactly the same name (i.e., X.columns = ['WI', 'T1', 'H_Tcr', 'Ar', 'ALR_G', 'AI', 'Sa', 'Sv'])
 - var_predict: Is a optional variable, and must be a list with the output values to predict (e.g. ["PFA_max", "rDR_max"], ["PFA_max"] or ["rDR_max"])
 
